@@ -6,5 +6,5 @@ columns = 120
 lines = 35
 
 [font]
-normal = { family = "Overpass Mono" }
+normal = { family = "SF Mono" }
 size = 13
