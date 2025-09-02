@@ -1,0 +1,10 @@
+[window]
+padding = { x = 7, y = 5}
+
+[window.dimensions]
+columns = 120
+lines = 35
+
+[font]
+normal = { family = "Overpass Mono" }
+size = 13
