@@ -2,6 +2,7 @@
 
 # Create directories
 mkdir -p ~/.config/alacritty
+mkdir -p ~/.config/nvim
 
 # Create symlinks
 ln -sf ~/.dotfiles/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
