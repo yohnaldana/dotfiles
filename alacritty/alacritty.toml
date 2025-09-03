@@ -7,4 +7,30 @@ lines = 35
 
 [font]
 normal = { family = "Hack" }
-size = 15
+size = 14
+
+# My Personal Color Scheme "Artifact"
+[colors.primary]
+background = "0x1c1c1d"
+foreground = "0xe5e3ea"
+
+[colors.normal]
+black = "0x282a2e"
+red = "0xa54242"
+green = "0x6B70F9"
+yellow = "0xdea37a"
+blue = "0x5f819d"
+magenta = "0x85678f"
+cyan = "0x5e8d87"
+white = "0x707880"
+
+[colors.bright]
+black = "0x373b41"
+red = "0xdc5252"
+green = "0x5ac6e7"
+yellow = "0xf0c674"
+blue = "0x4eaeff"
+magenta = "0xb294bb"
+cyan = "0x3fc0af"
+white = "0xededed"
+
