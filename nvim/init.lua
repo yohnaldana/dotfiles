@@ -88,3 +88,8 @@ end, { desc = 'Print the git blame for the current line' })
 -- For example, to add the "nohlsearch" package to automatically turn off search highlighting after
 -- 'updatetime' and when going to insert mode
 vim.cmd('packadd! nohlsearch')
+
+-- [[ FZF Support ]]
+-- set rtp+=/opt/homebrew/opt/fzf
+-- Line above seems to have an error, maybe I need to download the package
+
