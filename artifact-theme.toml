@@ -1,3 +1,6 @@
+# Notes
+# Can I make this colorscheme reflect a more accessible configuration? Does it feel modern or classic? Prefer classic
+
 [colors.primary]
 background = "0x1c1c1d"
 foreground = "0xe5e3ea"
@@ -15,7 +18,7 @@ white = "0x707880"
 [colors.bright]
 black = "0x373b41"
 red = "0xdc5252"
-green = "0x5ac6e7"
+green = "0x6B70F9" #actually purple
 yellow = "0xf0c674"
 blue = "0x4eaeff"
 magenta = "0xb294bb"
