@@ -1,6 +1,7 @@
 alias copy='pbcopy'
 alias paste='pbpaste'
 alias st='git status -sb'
+alias ls='ls -lhG'
 
 
 autoload -Uz vcs_info
