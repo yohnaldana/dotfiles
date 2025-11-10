@@ -1,4 +1,5 @@
--- Neovim Configuration
+-- Yohn's Neovim Configuration
+require('options')
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
