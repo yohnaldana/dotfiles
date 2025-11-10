@@ -1,8 +1,15 @@
+# Yohn's Ghostty configuration
+
 theme = Glacier
 
-adjust-cursor-thickness = 3
+adjust-cursor-thickness = 4
 
 cursor-color = FFCE1B
 
-window-height = 35
+window-height = 36
 window-width = 128
+
+macos-option-as-alt = true
+
+# Quake style drop-down terminal 
+keybind = global:cmd+backquote=toggle_quick_terminal
