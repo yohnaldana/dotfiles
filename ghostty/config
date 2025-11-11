@@ -13,3 +13,6 @@ macos-option-as-alt = true
 
 # Quake style drop-down terminal 
 keybind = global:cmd+backquote=toggle_quick_terminal
+
+# Font
+font-style = "FiraCode Nerd Font Mono"
