@@ -16,5 +16,13 @@
 ;; Clipboard integration
 (setq select-enable-clipboard t)
 
+;; Visual wrap (soft)
+(global-visual-line-mode 1)
+
+;; Spelling
+(add-hook 'org-mode-hook #'flyspell-mode)
+(setq ispell-program-name "aspell")
+
+
 (provide 'editing)
 ;;; editing.el ends here
