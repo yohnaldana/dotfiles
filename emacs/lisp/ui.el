@@ -24,7 +24,7 @@
         modus-themes-bold-constructs nil
         modus-themes-mixed-fonts t)
   ;; Finally, load your preferred theme variant:
-  (load-theme 'standard-ligh t))
+  (load-theme 'standard-light t))
 
 (provide 'ui)
 ;;; ui.el ends here
