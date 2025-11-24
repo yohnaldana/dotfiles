@@ -15,11 +15,11 @@ vim.g.mapleader = ' '
 -- (Note the single quotes)
 
 -- Print the line number in front of each line
-vim.o.number = true
+vim.o.number = false
 
 -- Use relative line numbers, so that it is easier to jump with j, k. This will affect the 'number'
 -- option above, see `:h number_relativenumber`
-vim.o.relativenumber = true
+vim.o.relativenumber = false
 
 -- Sync clipboard between OS and Neovim. Schedule the setting after `UiEnter` because it can
 -- increase startup-time. Remove this option if you want your OS clipboard to remain independent.
@@ -92,7 +92,6 @@ end, { desc = 'Print the git blame for the current line' })
 -- 'updatetime' and when going to insert mode
 vim.cmd('packadd! nohlsearch')
 
--- [[ FZF Support ]]
--- set rtp+=/opt/homebrew/opt/fzf
--- Line above seems to have an error, maybe I need to download the package
+-- [[ Options ]]
 
+vim.opt.foldmethod = marker

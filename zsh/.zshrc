@@ -29,3 +29,9 @@ alias paste='pbpaste'
 alias st='git status -sb'
 alias ls='ls -lhGt'
 alias ll='ls -ltG | grep -v "^total" | awk "{print \$NF}"'
+alias notes="cd ~/Documents/Main-notes/"
+
+# Tmux
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    tmux attach -t default || tmux new -s default
+fi
