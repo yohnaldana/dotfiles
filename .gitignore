@@ -2,3 +2,4 @@ emacs/elpa/
 emacs/eshell/
 emacs/bookmarks
 emacs/#*#
+nvim/nvim-pack-lock.json
