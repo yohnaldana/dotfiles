@@ -3,7 +3,7 @@
 vim.o.termguicolors = true
 
 local p = {
-  bg = "212121",
+  bg = "#212121",
   fg = "#ffffff",
   muted = "#aeb0b5",
   blue = "#105bd8",

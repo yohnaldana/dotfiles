@@ -1,29 +1,13 @@
 -- Yohn's Neovim Configuration
 require('options')
 require('keymaps')
-require('plugins')
-require('colorscheme')
--- Set <space> as the leader key
--- See `:help mapleader`
--- NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+
 vim.g.mapleader = ' '
 
--- [[ Setting options ]] See `:h vim.o`
--- NOTE: You can change these options as you wish!
--- For more options, you can see `:help option-list`
--- To see documentation for an option, you can use `:h 'optionname'`, for example `:h 'number'`
--- (Note the single quotes)
-
--- Print the line number in front of each line
 vim.o.number = false
 
--- Use relative line numbers, so that it is easier to jump with j, k. This will affect the 'number'
--- option above, see `:h number_relativenumber`
 vim.o.relativenumber = false
 
--- Sync clipboard between OS and Neovim. Schedule the setting after `UiEnter` because it can
--- increase startup-time. Remove this option if you want your OS clipboard to remain independent.
--- See `:help 'clipboard'`
 vim.api.nvim_create_autocmd('UIEnter', {
   callback = function()
     vim.o.clipboard = 'unnamedplus'
@@ -34,7 +18,6 @@ vim.api.nvim_create_autocmd('UIEnter', {
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
--- Highlight the line where the cursor is on
 vim.o.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
@@ -43,8 +26,6 @@ vim.o.scrolloff = 10
 -- Show <tab> and trailing spaces
 vim.o.list = true
 
--- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
--- instead raise a dialog asking if you wish to save the current file(s) See `:help 'confirm'`
 vim.o.confirm = true
 
 -- [[ Set up keymaps ]] See `:h vim.keymap.set()`, `:h mapping`, `:h keycodes`
@@ -92,6 +73,84 @@ end, { desc = 'Print the git blame for the current line' })
 -- 'updatetime' and when going to insert mode
 vim.cmd('packadd! nohlsearch')
 
--- [[ Options ]]
+-- Theme
+vim.pack.add({
+  "https://github.com/kungfusheep/mfd.nvim",
+})
+vim.cmd("colorscheme mfd-mono")
 
-vim.opt.foldmethod = marker
+vim.opt.guicursor = {
+      "n:block-CursorNormal",
+      "v:block-CursorVisual",
+      "i:block-CursorInsert",
+      "r-cr:block-CursorReplace",
+      "c:block-CursorCommand",
+    }
+
+require('mfd').enable_cursor_sync()
+
+-- vim.cmd.colorscheme("dust")
+
+
+-- Markdown editing --
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    -- Soft wrap long paragraphs nicely
+    vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true
+    vim.opt_local.breakindent = true
+
+    -- Do not show listchars in prose buffers
+    vim.opt_local.list = false
+
+    -- Better movement in wrapped lines:
+    -- j/k move by screen line when no count is given
+    vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, buffer = true })
+    vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, buffer = true })
+
+    -- Keep text readable
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = "en_us"
+
+    -- Nice for prose
+    vim.opt_local.conceallevel = 2
+    vim.opt_local.concealcursor = "nc"
+
+    -- Optional: autowrap comments/text at 80
+    vim.opt_local.textwidth = 80
+    vim.opt_local.colorcolumn = "81"
+  end,
+})
+
+-- Markdown rendering --
+vim.pack.add({
+  "https://github.com/MeanderingProgrammer/render-markdown.nvim",
+})
+
+require("render-markdown").setup({
+  file_types = { "markdown" },
+})
+
+-- Zen mode package -- 
+vim.pack.add({
+  "https://github.com/folke/zen-mode.nvim",
+})
+
+require("zen-mode").setup({
+  window = {
+    width = 90,
+    options = {
+      number = false,
+      relativenumber = false,
+    },
+  },
+})
+
+vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "Toggle Zen Mode" })
+
+-- Tabs --
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
+vim.opt.expandtab = true
