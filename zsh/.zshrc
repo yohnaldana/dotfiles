@@ -23,15 +23,44 @@ export NVM_DIR="$HOME/.nvm"
 export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
 # Aliases
-alias dot='cd ~/.dotfiles/'
 alias copy='pbcopy'
 alias paste='pbpaste'
 alias st='git status -sb'
 alias ls='ls -lhGt'
-alias ll='ls -ltG | grep -v "^total" | awk "{print \$NF}"'
-alias notes="cd ~/Documents/Main-notes/"
+alias notes="cd ~/Documents/Journal/"
+alias dot='cd ~/.dotfiles/'
 
-# Tmux
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    tmux attach -t default || tmux new -s default
-fi
+export PATH="/Users/yohn/.local/homebrew/opt/ruby/bin:$PATH"
+export PATH="/Users/yohn/.local/homebrew/lib/ruby/gems/4.0.0/bin:$PATH"
+
+unset http_proxy
+unset https_proxy
+unset HTTP_PROXY
+unset HTTPS_PROXY
+
+# Fix some ssl issue 03/2026
+export SSL_CERT_FILE=$(brew --prefix)/etc/ca-certificates/cert.pem
+
+# Enable Vi mode
+bindkey -v
+
+# Change cursor shape depending on vi mode (chatgpt generated)
+function zle-keymap-select {
+  if [[ $KEYMAP == vicmd ]] || [[ $1 == 'block' ]]; then
+    printf '\e[1 q'   # block cursor
+  else
+    printf '\e[5 q'   # beam / pipe cursor
+  fi
+}
+
+zle -N zle-keymap-select
+
+function zle-line-init {
+  printf '\e[5 q'     # start in insert mode with beam
+}
+
+zle -N zle-line-init
+
+precmd() { printf '\e[5 q' } # what does this do?
+
+# (chatgpt end)
