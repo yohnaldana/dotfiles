@@ -77,12 +77,12 @@ vim.cmd('packadd! nohlsearch')
 vim.pack.add({
   "https://github.com/kungfusheep/mfd.nvim",
 })
-vim.cmd("colorscheme mfd-mono")
+vim.cmd("colorscheme mfd-amber")
 
 vim.opt.guicursor = {
       "n:block-CursorNormal",
       "v:block-CursorVisual",
-      "i:block-CursorInsert",
+      "i:ver35-CursorInsert",
       "r-cr:block-CursorReplace",
       "c:block-CursorCommand",
     }
@@ -119,7 +119,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
     -- Optional: autowrap comments/text at 80
     vim.opt_local.textwidth = 80
-    vim.opt_local.colorcolumn = "81"
+    -- vim.opt_local.colorcolumn = "81"
   end,
 })
 
