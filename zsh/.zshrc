@@ -1,6 +1,7 @@
 # Yohnathan's  ZSH config
 # c.2025
 autoload -Uz vcs_info
+autoload -Uz add-zsh-hook
 precmd () { vcs_info }
 
 # format vcs_info_msg_0
@@ -9,13 +10,19 @@ precmd () { vcs_info }
 # Custom Prompt previous
 # PROMPT="%F{250}%~%f %F{75}›%f "
 # RPROMPT="%F{75}%t%f"
+#
+add-zsh-hook precmd add_newline_before_prompt
+add_newline_before_prompt() {
+  print ""
+}
 
 # Main prompt
 PROMPT="%F{250}%~%f %F{75}›%f "
 
+# Global Variables
 # export PATH="$HOME/your_directory:$PATH"
 export PATH="$HOME/.scripts/:$PATH"
-
+export MANPAGER="most"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -27,8 +34,13 @@ alias copy='pbcopy'
 alias paste='pbpaste'
 alias st='git status -sb'
 alias ls='ls -lhGt'
-alias notes="cd ~/Documents/Journal/"
+alias notes="cd ~/Journal/"
 alias dot='cd ~/.dotfiles/'
+alias lso='ls -1'
+alias gl='git log --oneline --graph --decorate'
+alias nvim-zsh='nvim ~/.zshrc'
+alias nvim-nvim='nvim ~/.config/nvim/init.lua'
+alias project-log="cd ~/Projects/project-log/ && lso"
 
 export PATH="/Users/yohn/.local/homebrew/opt/ruby/bin:$PATH"
 export PATH="/Users/yohn/.local/homebrew/lib/ruby/gems/4.0.0/bin:$PATH"
@@ -43,6 +55,7 @@ export SSL_CERT_FILE=$(brew --prefix)/etc/ca-certificates/cert.pem
 
 # Enable Vi mode
 bindkey -v
+bindkey -M viins "^[." insert-last-word #enable option + . to insert last arg
 
 # Change cursor shape depending on vi mode (chatgpt generated)
 function zle-keymap-select {
@@ -64,3 +77,7 @@ zle -N zle-line-init
 precmd() { printf '\e[5 q' } # what does this do?
 
 # (chatgpt end)
+
+alias dt="date +%m%d%y%H%M%S"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

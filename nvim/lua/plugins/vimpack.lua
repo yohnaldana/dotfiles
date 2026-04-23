@@ -1,0 +1,13 @@
+vim.pack.add({
+  "https://github.com/rebelot/kanagawa.nvim.git",
+  "https://github.com/kungfusheep/mfd.nvim.git",
+  "https://github.com/neovim/nvim-lspconfig",
+  "https://github.com/nvim-tree/nvim-web-devicons",
+  "https://github.com/nvim-lualine/lualine.nvim",
+  "https://github.com/MeanderingProgrammer/render-markdown.nvim",
+  "https://github.com/folke/zen-mode.nvim",
+  "https://github.com/nvim-lua/plenary.nvim",
+  "https://github.com/nvim-telescope/telescope.nvim",
+  "https://github.com/numToStr/Comment.nvim.git",
+  "https://github.com/mason-org/mason.nvim.git",
+})

@@ -1,7 +1,9 @@
 -- Yohn's Neovim Configuration
-require('options')
-require('keymaps')
-
+require('config.options')
+require('config.keymaps')
+require('plugins.vimpack')
+require('plugins.lualine')
+require('plugins.telescope')
 vim.g.mapleader = ' '
 
 vim.o.number = false
@@ -73,24 +75,12 @@ end, { desc = 'Print the git blame for the current line' })
 -- 'updatetime' and when going to insert mode
 vim.cmd('packadd! nohlsearch')
 
--- Theme
-vim.pack.add({
-  "https://github.com/kungfusheep/mfd.nvim",
-})
-vim.cmd("colorscheme mfd-amber")
+-- Default Colorscheme
+vim.cmd("colorscheme kanagawa")
 
-vim.opt.guicursor = {
-      "n:block-CursorNormal",
-      "v:block-CursorVisual",
-      "i:ver35-CursorInsert",
-      "r-cr:block-CursorReplace",
-      "c:block-CursorCommand",
-    }
-
-require('mfd').enable_cursor_sync()
-
--- vim.cmd.colorscheme("dust")
-
+-- LSP Support --
+-- vim.lsp.config('typescript-language-server', {})
+-- vim.lsp.enable('typescript-language-server')
 
 -- Markdown editing --
 vim.api.nvim_create_autocmd("FileType", {
@@ -120,23 +110,26 @@ vim.api.nvim_create_autocmd("FileType", {
     -- Optional: autowrap comments/text at 80
     vim.opt_local.textwidth = 80
     -- vim.opt_local.colorcolumn = "81"
+
+    -- Set colorscheme
+    vim.opt.guicursor = {
+      "n:block-CursorNormal",
+      "v:block-CursorVisual",
+      "i:ver35-CursorInsert",
+      "r-cr:block-CursorReplace",
+      "c:block-CursorCommand",
+    }
+    require('mfd').enable_cursor_sync()
+    vim.cmd("colorscheme mfd-flir-rh")
   end,
 })
 
--- Markdown rendering --
-vim.pack.add({
-  "https://github.com/MeanderingProgrammer/render-markdown.nvim",
-})
-
+-- Markdown setup --
 require("render-markdown").setup({
   file_types = { "markdown" },
 })
 
--- Zen mode package -- 
-vim.pack.add({
-  "https://github.com/folke/zen-mode.nvim",
-})
-
+-- Zen mode setup -- 
 require("zen-mode").setup({
   window = {
     width = 90,
