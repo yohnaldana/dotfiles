@@ -1,15 +1,24 @@
 -- Yohn's Neovim Configuration
-require('config.options')
-require('config.keymaps')
-require('plugins.vimpack')
-require('plugins.lualine')
-require('plugins.telescope')
+-- 1. Setup Mason and get lsp working as well as other servers
+-- 2. Comment.vim
+-- 3. Learn to use telescope
+-- 4. Completion frameworks, popups that are not to obtrusive
+-- 5. Install and use conform
+-- 6. Clean up configuration file
+-- 7. Keep it lean and simple but fast
 vim.g.mapleader = ' '
 
+require('plugins.vimpack')
+require('config.options')
+require('config.keymaps')
+require('plugins.lualine')
+require('plugins.telescope')
+require('plugins.mason')
+require('config.lsp')
+require('config.cmp')
+
 vim.o.number = false
-
 vim.o.relativenumber = false
-
 vim.api.nvim_create_autocmd('UIEnter', {
   callback = function()
     vim.o.clipboard = 'unnamedplus'
@@ -76,7 +85,8 @@ end, { desc = 'Print the git blame for the current line' })
 vim.cmd('packadd! nohlsearch')
 
 -- Default Colorscheme
-vim.cmd("colorscheme kanagawa")
+-- vim.cmd("colorscheme kanagawa")
+vim.cmd("colorscheme oxocarbon")
 
 -- LSP Support --
 -- vim.lsp.config('typescript-language-server', {})

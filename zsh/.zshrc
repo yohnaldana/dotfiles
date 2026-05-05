@@ -10,15 +10,22 @@ precmd () { vcs_info }
 # Custom Prompt previous
 # PROMPT="%F{250}%~%f %F{75}›%f "
 # RPROMPT="%F{75}%t%f"
-#
+
 add-zsh-hook precmd add_newline_before_prompt
 add_newline_before_prompt() {
   print ""
 }
 
-# Main prompt
-PROMPT="%F{250}%~%f %F{75}›%f "
+# Update Tmux statusline after a change in directory
+_refresh_tmux_status_after_cd() {
+  [[ -n "$TMUX" ]] && tmux refresh-client -S
+}
 
+add-zsh-hook chpwd _refresh_tmux_status_after_cd
+
+# Main prompt
+# PROMPT="%F{250}%~%f %F{75}›%f "
+PROMPT="%F{75}›%f "
 # Global Variables
 # export PATH="$HOME/your_directory:$PATH"
 export PATH="$HOME/.scripts/:$PATH"
